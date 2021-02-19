@@ -4,7 +4,7 @@
 
 import Foundation
 
-func getCSVData() -> [[String]] {
+func readCSVData() -> [[String]] {
     var dataArray : [[String]] = []
     let path = Bundle.main.path(forResource: "SleepStudyData", ofType: "csv")
     let url = URL(fileURLWithPath: path!)
