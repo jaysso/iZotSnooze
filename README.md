@@ -7,7 +7,7 @@
 #### Pod install the podfile provided
 
 # Comments:
-##### Completed all frontend development
+##### All frontend development is my own work
 ###### - Currently facing issues with contstraints
 ##### Working to integrate HealthKit API
 ##### Sleep app currently using CoreData. Working to transition to using Firebase.
