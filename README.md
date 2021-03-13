@@ -1,5 +1,6 @@
 # **iZotSnooze**
 ###### To access the project, please download iZotSnooze-Weights.zip 
+###### App is currently constrained to screen sizes of iPhone 11s due to diffuclty with constraints
 
 
 # To run the ios app...
@@ -7,6 +8,7 @@
 
 # Comments:
 ##### Completed all frontend development
+###### - Currently facing issues with contstraints
 ##### Working to integrate HealthKit API
 ##### Sleep app currently using CoreData. Working to transition to using Firebase.
 ##### Current algorithm of hardcorded reccomendation using linear regression. Looking to implement ML and crawlers.
