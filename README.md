@@ -27,8 +27,7 @@
 
 ## Recommendation Screen with Linear Regression Line 
 ###### Assisted by Matthew Eng
-<img width="390" alt="Screen Shot 2021-03-12 at 17 34 38" src="https://user-images.githubusercontent.com/72124581/111021677-f6879580-8382-11eb-9237-4fe2edafb601.png">
-<img width="390" alt="Screen Shot 2021-03-12 at 18 15 39" src="https://user-images.githubusercontent.com/72124581/111021689-056e4800-8383-11eb-99b5-298ec522c7dc.png">
+<img width="390" alt="Screen Shot 2021-03-12 at 17 34 38" src="https://user-images.githubusercontent.com/72124581/111021677-f6879580-8382-11eb-9237-4fe2edafb601.png"><img width="390" alt="Screen Shot 2021-03-12 at 18 15 39" src="https://user-images.githubusercontent.com/72124581/111021689-056e4800-8383-11eb-99b5-298ec522c7dc.png">
 
 ## Exporting Data As CVS
 <img width="390" alt="Screen Shot 2021-03-12 at 18 16 09" src="https://user-images.githubusercontent.com/72124581/111021698-10c17380-8383-11eb-978e-cc5be3c1f412.png">
@@ -37,6 +36,4 @@
 <img width="390" alt="Screen Shot 2021-03-12 at 18 16 45" src="https://user-images.githubusercontent.com/72124581/111021703-18811800-8383-11eb-9aa4-b2de0192a90e.png">
 
 ## Menu and User Profile
-<img width="390" alt="Screen Shot 2021-03-12 at 18 15 48" src="https://user-images.githubusercontent.com/72124581/111021940-8da11d00-8384-11eb-96ae-8c69bf0c441e.png">
-<img width="390" alt="Screen Shot 2021-03-12 at 22 42 50" src="https://user-images.githubusercontent.com/72124581/111021934-81b55b00-8384-11eb-96a3-2623cd242df2.png">
-<img width="390" alt="Screen Shot 2021-03-12 at 22 42 58" src="https://user-images.githubusercontent.com/72124581/111021935-8548e200-8384-11eb-973c-ef907d51edad.png">
+<img width="390" alt="Screen Shot 2021-03-12 at 18 15 48" src="https://user-images.githubusercontent.com/72124581/111021940-8da11d00-8384-11eb-96ae-8c69bf0c441e.png"><img width="390" alt="Screen Shot 2021-03-12 at 22 42 50" src="https://user-images.githubusercontent.com/72124581/111021934-81b55b00-8384-11eb-96a3-2623cd242df2.png"><img width="390" alt="Screen Shot 2021-03-12 at 22 42 58" src="https://user-images.githubusercontent.com/72124581/111021935-8548e200-8384-11eb-973c-ef907d51edad.png">
