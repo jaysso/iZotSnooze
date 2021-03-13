@@ -1,12 +1,13 @@
 # Uncomment the next line to define a global platform for your project
 # platform :ios, '9.0'
 
-target 'iZotSnooze' do
+target 'iZotSnoozeTM' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
 
-  # Pods for iZotSnooze
-
-pod 'FSCalendar'
-
+  # Pods for iZotSnoozeTM
+	pod 'Charts', '3.6.0'
+	pod 'FSCalendar'
+	pod 'Firebase/Analytics'
+	pod 'Firebase/Auth'
 end

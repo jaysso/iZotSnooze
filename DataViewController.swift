@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import CoreData
 
 class DataViewController: UIViewController {
     
@@ -19,45 +20,69 @@ class DataViewController: UIViewController {
     @IBOutlet weak var HeartrateInput: UITextField!
     
     
-    
-    @IBAction func BRInputBox(_ sender: Any) {
-        
-    }
-    @IBAction func HBInputBox(_ sender: Any) {
-    }
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.isNavigationBarHidden = false
         DateCalendarPicker(_: "")
+
     }
     @IBAction func DateCalendarPicker(_ sender: Any) {
         DatePicker.maximumDate = Date()
+        }
+    
+    @IBAction func BackToVC(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func BackToGraph(_ sender: Any) {
-        // SHOULD MAKE A CLASS LOL
-        // getting date in a string
+        //CORE DATA SETUP
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        let entity = NSEntityDescription.entity(forEntityName: "SleepData", in: context)
+        let newSleepData = NSManagedObject(entity: entity!, insertInto: context) 
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "SleepData")
+
+        // DATE + DAY OF WEEK
         let dateFormatter = DateFormatter()
         let dayOfWeek = DateFormatter()
         dateFormatter.dateFormat = "YYYY MM dd"
         dayOfWeek.dateFormat = "E"
         let dayOfWeekString = dayOfWeek.string(from: DatePicker.date)
         let dateString = dateFormatter.string(from: DatePicker.date)
-        print("\n\tDate: ", dateString)
         
-        // getting sleep time to a string: HH:mm (24hour format)
+        // DELETING ANY DUPLICATE DAYS
+        request.predicate = NSPredicate(format: "date = %@", dateString)
+        do {
+            let objects = try context.fetch(request)
+                for object in objects {
+                    context.delete(object as! NSManagedObject)
+                }
+            
+            try context.save()
+        } catch {
+           print("Failed saving")
+        }
+        
+        print("\n\tDate: ", dateString)
+        newSleepData.setValue(dateString, forKey: "date")
+        newSleepData.setValue(dayOfWeekString, forKey: "dayOfWeek")
+        
+        
+        // SLEEP TIME string: HH:mm (24hour format)
         let sleepFormatter = DateFormatter()
         sleepFormatter.dateFormat = "HH:mm"
         let sleepString = sleepFormatter.string(from: SleepTime.date)
         print("\tSleep Time: ", sleepString)
-
-        // getting wake time
+        newSleepData.setValue(sleepString, forKey: "sleep")
+        
+        // WAKE TIME
         let wakeFormatter = DateFormatter()
         wakeFormatter.dateFormat = "HH:mm"
         let wakeString = wakeFormatter.string(from: WakeTime.date)
         print("\tWake Up Time: ", wakeString)
+        newSleepData.setValue(wakeString, forKey: "wake")
         
-        // func for getting time slept
+        // TIME SLEPT IN SECONDS
         func getDateDiff(start: Date, end: Date) -> Int  {
             let diffComponents = Calendar.current.dateComponents([.second], from: start, to: end)
             let seconds = diffComponents.second
@@ -66,63 +91,45 @@ class DataViewController: UIViewController {
             }
             return Int(seconds!)
         }
-        
-        // time slept
         let timeSlept = String(getDateDiff(start: SleepTime.date, end: WakeTime.date))
         print("\tTime Slept (in seconds): ",timeSlept)
+        newSleepData.setValue(timeSlept, forKey: "timeSlept")
         
-        // geting mood scale 0-10
+        // MOOD scale 0-10
         var moodRate = MoodDecimal.value
-        moodRate = moodRate * 10
+        moodRate = moodRate * 5
         print("\tMood (Scale 1-10): ", String(format: "%.1f", moodRate))
+        newSleepData.setValue(String(format: "%.1f", moodRate), forKey: "mood")
         
-        // getting noise ambiance
+        // NOISE AMBIANCE
         var noiseAmbiance = NoiseAmbianceDecimal.value
         noiseAmbiance = noiseAmbiance * 10
         print("\tNoise Ambiance (Scale 1-10): ", noiseAmbiance.rounded())
+        newSleepData.setValue(String(noiseAmbiance.rounded()), forKey: "noise")
         
-        // getting heartrate
+        
+        // HEARTRATE
         let heartrate = String(HeartrateInput.text!)
         print("\tAverage Heartrate: ", heartrate, " BPM")
+        if heartrate != "" {
+            newSleepData.setValue(heartrate, forKey: "heartRate")
+        } else {newSleepData.setValue("0", forKey: "heartRate")}
         
-        // getting breath rate
+        // BREATHRATE
         let breathrate = String(BreathRateInput.text!)
         print("\tAverage Breath Rate: ", breathrate, " Breaths per minute")
+        if breathrate != "" {
+        newSleepData.setValue(breathrate, forKey: "breathRate") // getting breath rate
+        } else {newSleepData.setValue("0", forKey: "breathRate")}
         
-        // array to append to dataArray
-        // dateString, dayOfWeekString, and timeslept must remain in same index
-        // add heartBeat, Noise ambiance
-        let tempArray: [String] = [dateString, dayOfWeekString, sleepString, wakeString, timeSlept, String(format: "%.1f", moodRate), String(format: "%.1f", noiseAmbiance), heartrate, breathrate]
-        
-        // using navigation controller to prevent data from being erased
-        let mainVC = navigationController?.viewControllers.first as? ViewController
-        var inArray = false
-        var count = -1
-        if mainVC?.dataArray != [] {
-            for data in mainVC!.dataArray {
-                count += 1
-                    if data[0] == tempArray[0] {
-                    mainVC?.dataArray.remove(at: count)
-                    mainVC?.dataArray.insert(tempArray, at: count)
-                    inArray = true
-                    break
-                
-                }
-            }
+        // SAVING CORE DATA
+        do {
+            try context.save()
+            self.dismiss(animated: true, completion: nil)
+        } catch {
+            print("Failed saving")
+            self.dismiss(animated: true, completion: nil)
         }
-        if inArray != true {
-            mainVC?.dataArray.append(tempArray)
-            mainVC?.dataArray.sort{($0[0] > $1[0])}
-            print("User Data:")
-            for arr in mainVC!.dataArray {
-                print(arr)
-            }
-            print("\n")
-        }
-        mainVC?.ChangeSegControl(mainVC?.MultipleCharts.selectedSegmentIndex as Any)
-        navigationController?.popViewController(animated: true)
-        // should have function to update charts after entering data
-        
         
         
     }
