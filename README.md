@@ -1,6 +1,6 @@
-# **iZotSnooze**
+# iZotSnooze
 - To access the project, please download iZotSnooze-Weights.zip 
-- App is currently constrained to screen sizes of iPhone 11 due to difficulty with constraints
+- App is currently constrained to screen sizes of iPhone 11
 
 
 ## To run the ios app...
