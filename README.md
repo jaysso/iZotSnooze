@@ -16,6 +16,7 @@
 
 ## Sign In/Sign Up
 - Assisted by Kayla Hoang
+
 <img width="250" alt="Screen Shot 2021-03-12 at 17 29 52" src="https://user-images.githubusercontent.com/72124581/111021648-c17b4300-8382-11eb-981a-3df9ac3f3435.png"><img width="250" alt="Screen Shot 2021-03-12 at 22 39 45" src="https://user-images.githubusercontent.com/72124581/111021847-f63bca00-8383-11eb-889e-b4ac9c6c6d21.png">
 
 ## Using SwiftUICharts to display user's hours slept
@@ -23,10 +24,12 @@
 
 ## Data Display using FSCalendar
 - Assisted by Gerald Post
+
 <img width="250" alt="Screen Shot 2021-03-12 at 22 41 13" src="https://user-images.githubusercontent.com/72124581/111021864-0f447b00-8384-11eb-904d-8750e72195bb.png">
 
 ## Recommendation Screen with Linear Regression Line 
 - Assisted by Matthew Eng
+
 <img width="250" alt="Screen Shot 2021-03-12 at 17 34 38" src="https://user-images.githubusercontent.com/72124581/111021677-f6879580-8382-11eb-9237-4fe2edafb601.png"><img width="250" alt="Screen Shot 2021-03-12 at 18 15 39" src="https://user-images.githubusercontent.com/72124581/111021689-056e4800-8383-11eb-99b5-298ec522c7dc.png">
 
 ## Exporting Data As CVS
